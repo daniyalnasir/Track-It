@@ -24,3 +24,8 @@ dependencyResolutionManagement {
 
 rootProject.name = "TrackIt"
 include(":app")
+include(":core")
+include(":core:design-systems")
+include(":dashboard")
+include(":stats")
+include(":settings")
