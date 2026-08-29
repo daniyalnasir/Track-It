@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.codeshod.dashboard"
+    namespace = "com.codeshod.categories"
     compileSdk {
         version = release(37)
     }

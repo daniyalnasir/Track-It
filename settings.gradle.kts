@@ -1,3 +1,4 @@
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 pluginManagement {
     repositories {
         google {
@@ -26,6 +27,8 @@ rootProject.name = "TrackIt"
 include(":app")
 include(":core")
 include(":core:design-systems")
+include(":core:navigation")
 include(":dashboard")
 include(":stats")
+include(":Categories")
 include(":settings")
