@@ -1,5 +1,6 @@
 plugins {
     alias(libs.plugins.android.library)
+    alias(libs.plugins.ksp)
     alias(libs.plugins.hilt)
 }
 
@@ -28,4 +29,13 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(libs.androidx.junit)
+
+    // 2. Add the missing runtime dependency
+    implementation(libs.hilt.android)
+    // 3. Add the compiler dependency
+    ksp (libs.hilt.android.compiler)
+
+    // Room
+    implementation (libs.androidx.room.runtime)
+    ksp (libs.androidx.room.compiler)
 }
