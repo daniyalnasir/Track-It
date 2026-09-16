@@ -36,6 +36,11 @@ private val navigationItems = listOf(
         route = Screen.Categories
     ),
     NavigationItem(
+        title = "Wallet",
+        icon = R.drawable.ic_wallet,
+        route = Screen.Wallet
+    ),
+    NavigationItem(
         title = "Settings",
         icon = R.drawable.ic_settings,
         route = Screen.Settings

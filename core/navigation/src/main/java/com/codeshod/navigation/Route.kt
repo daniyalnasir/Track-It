@@ -6,5 +6,6 @@ object Route {
     const val ROUTE_STATS = "stats"
     const val ROUTE_CATEGORIES = "categories"
     const val ROUTE_SETTINGS = "settings"
+    const val ROUTE_WALLET = "wallet"
     const val ROUTE_ADD_TRANSACTION = "addTransaction"
 }

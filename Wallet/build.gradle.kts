@@ -1,11 +1,10 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.compose)
-    alias(libs.plugins.kotlin.serialization)
 }
 
 android {
-    namespace = "com.codeshod.navigation"
+    namespace = "com.codeshod.wallet"
     compileSdk {
         version = release(37)
     }
@@ -19,13 +18,13 @@ android {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
+
     buildFeatures {
         compose = true
     }
 }
 
 dependencies {
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -41,12 +40,4 @@ dependencies {
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
-    implementation(libs.navigation.compose)
-    implementation(libs.kotlinx.serialization.json)
-
-    implementation(projects.dashboard)
-    implementation(projects.stats)
-    implementation(projects.categories)
-    implementation(projects.settings)
-    implementation(projects.wallet)
 }

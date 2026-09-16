@@ -19,6 +19,7 @@ import com.codeshod.categories.presentation.CategoriesScreen
 import com.codeshod.dashboard.presentation.DashboardScreen
 import com.codeshod.settings.presentation.SettingsScreen
 import com.codeshod.stats.presentation.StatsScreen
+import com.codeshod.wallet.presentation.WalletScreen
 
 @Composable
 fun Navigation() {
@@ -99,6 +100,9 @@ fun provideNavGraph(navController: NavHostController): NavGraph {
         }
         composable<Screen.Settings> {
             SettingsScreen()
+        }
+        composable<Screen.Wallet> {
+            WalletScreen()
         }
         composable<Screen.AddTransaction> {
         }
