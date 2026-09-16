@@ -12,7 +12,6 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.vectorResource
-import androidx.navigation.NavHostController
 
 data class NavigationItem(
     val title: String,
@@ -20,7 +19,7 @@ data class NavigationItem(
     val route: Screen
 )
 
-val navigationItems = listOf(
+private val navigationItems = listOf(
     NavigationItem(
         title = "Dashboard",
         icon = R.drawable.ic_dashboard,
@@ -44,7 +43,9 @@ val navigationItems = listOf(
 )
 
 @Composable
-fun BottomNavigationBar(navController: NavHostController) {
+fun BottomNavigationBar(
+    onNavigate: (screen: Screen) -> Unit,
+) {
     val selectedNavigationIndex = rememberSaveable {
         mutableIntStateOf(0)
     }
@@ -57,7 +58,7 @@ fun BottomNavigationBar(navController: NavHostController) {
                 selected = selectedNavigationIndex.intValue == index,
                 onClick = {
                     selectedNavigationIndex.intValue = index
-                    navController.navigate(item.route)
+                    onNavigate(item.route)
                 },
                 icon = {
                     Icon(

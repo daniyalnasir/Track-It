@@ -1,6 +1,7 @@
 package com.codeshod.navigation
 
 import com.codeshod.navigation.Route.EMPTY_STRING
+import com.codeshod.navigation.Route.ROUTE_ADD_TRANSACTION
 import com.codeshod.navigation.Route.ROUTE_CATEGORIES
 import com.codeshod.navigation.Route.ROUTE_DASHBOARD
 import com.codeshod.navigation.Route.ROUTE_SETTINGS
@@ -21,4 +22,8 @@ sealed class Screen(val route: String = EMPTY_STRING) {
 
     @Serializable
     object Settings : Screen(ROUTE_SETTINGS)
+
+    @Serializable
+    object AddTransaction : Screen(ROUTE_ADD_TRANSACTION)
+
 }

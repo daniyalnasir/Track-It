@@ -7,11 +7,13 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.vectorResource
 
 @Composable
-fun FloatingButton() {
+fun FloatingButton(
+    onNavigate: (screen: Screen) -> Unit,
+) {
 
     FloatingActionButton(
         onClick = {
-
+            onNavigate(Screen.AddTransaction)
         }
     ) {
         Icon(
@@ -19,5 +21,4 @@ fun FloatingButton() {
             contentDescription = "Add Item"
         )
     }
-
 }

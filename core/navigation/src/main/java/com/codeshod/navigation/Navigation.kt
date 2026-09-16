@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.navigation.NavController
 import androidx.navigation.NavGraph
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -26,10 +27,24 @@ fun Navigation() {
     Scaffold(
         modifier = Modifier.fillMaxSize(),
         bottomBar = {
-            BottomNavigationBar(navController)
+            BottomNavigationBar(
+                onNavigate = { screen ->
+                    navigateTo(
+                        screen = screen,
+                        navController = navController
+                    )
+                }
+            )
         },
         floatingActionButton = {
-            FloatingButton()
+            FloatingButton(
+                onNavigate = { screen ->
+                    navigateTo(
+                        screen = screen,
+                        navController = navController
+                    )
+                }
+            )
         }
     ) { innerPadding ->
 
@@ -85,7 +100,37 @@ fun provideNavGraph(navController: NavHostController): NavGraph {
         composable<Screen.Settings> {
             SettingsScreen()
         }
+        composable<Screen.AddTransaction> {
+        }
     }
 
     return graph
 }
+
+private fun navigateTo(
+    screen: Screen,
+    navController: NavController,
+) {
+
+    navController.navigate(route = screen) {
+        val popUp = needToPopUp(screen)
+
+        if (popUp != null) {
+            popUpTo(popUp) {
+                inclusive = true
+            }
+        }
+//                launchSingleTop = true
+//                restoreState = true
+    }
+}
+
+private fun needToPopUp(screen: Screen): Screen? {
+    return when (screen) {
+
+        else -> {
+            null
+        }
+    }
+}
+
