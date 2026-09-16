@@ -27,6 +27,9 @@ fun Navigation() {
         modifier = Modifier.fillMaxSize(),
         bottomBar = {
             BottomNavigationBar(navController)
+        },
+        floatingActionButton = {
+            FloatingButton()
         }
     ) { innerPadding ->
 
