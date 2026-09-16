@@ -13,6 +13,9 @@ import kotlinx.serialization.Serializable
 sealed class Screen(val route: String = EMPTY_STRING) {
 
     @Serializable
+    data object PreviousScreen : Screen(route = EMPTY_STRING)
+
+    @Serializable
     object Dashboard : Screen(ROUTE_DASHBOARD)
 
     @Serializable

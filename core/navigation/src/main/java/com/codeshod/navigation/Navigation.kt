@@ -27,6 +27,13 @@ fun Navigation() {
 
     Scaffold(
         modifier = Modifier.fillMaxSize(),
+        topBar = {
+            TopBar(
+                onNavigate = { screen ->
+                    navigateTo(screen, navController)
+                }
+            )
+        },
         bottomBar = {
             BottomNavigationBar(
                 onNavigate = { screen ->
@@ -116,16 +123,24 @@ private fun navigateTo(
     navController: NavController,
 ) {
 
-    navController.navigate(route = screen) {
-        val popUp = needToPopUp(screen)
-
-        if (popUp != null) {
-            popUpTo(popUp) {
-                inclusive = true
-            }
+    when (screen) {
+        is Screen.PreviousScreen -> {
+            navController.popBackStack()
         }
+
+        else -> {
+            navController.navigate(route = screen) {
+                val popUp = needToPopUp(screen)
+
+                if (popUp != null) {
+                    popUpTo(popUp) {
+                        inclusive = true
+                    }
+                }
 //                launchSingleTop = true
 //                restoreState = true
+            }
+        }
     }
 }
 
