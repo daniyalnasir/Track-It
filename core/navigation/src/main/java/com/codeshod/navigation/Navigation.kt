@@ -7,88 +7,102 @@ import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.navigation.NavController
 import androidx.navigation.NavGraph
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.createGraph
 import com.codeshod.categories.presentation.CategoriesScreen
 import com.codeshod.dashboard.presentation.DashboardScreen
+import com.codeshod.design_systems.CurvedHeader
+import com.codeshod.navigation.Screen.Companion.toScreen
 import com.codeshod.settings.presentation.SettingsScreen
 import com.codeshod.stats.presentation.StatsScreen
 import com.codeshod.wallet.presentation.WalletScreen
 
 @Composable
-fun Navigation() {
-    val navController = rememberNavController()
+fun Navigation(
+    navController: NavHostController = rememberNavController()
+) {
+    val navBackStackEntry by navController.currentBackStackEntryAsState()
+    val currentScreen = navBackStackEntry
+        ?.destination
+        ?.toScreen()
 
-    Scaffold(
-        modifier = Modifier.fillMaxSize(),
-        topBar = {
-            TopBar(
-                onNavigate = { screen ->
-                    navigateTo(screen, navController)
-                }
-            )
-        },
-        bottomBar = {
-            BottomNavigationBar(
-                onNavigate = { screen ->
-                    navigateTo(
-                        screen = screen,
-                        navController = navController
+    CurvedHeader {
+        Scaffold(
+            modifier = Modifier
+                .fillMaxSize(),
+            containerColor = Color.Transparent,
+            topBar = {
+                TopBar(
+                    currentScreen = currentScreen,
+                    onNavigate = { screen ->
+                        navigateTo(screen, navController)
+                    }
+                )
+            },
+            bottomBar = {
+                BottomNavigationBar(
+                    onNavigate = { screen ->
+                        navigateTo(
+                            screen = screen,
+                            navController = navController
+                        )
+                    }
+                )
+            },
+            floatingActionButton = {
+                FloatingButton(
+                    onNavigate = { screen ->
+                        navigateTo(
+                            screen = screen,
+                            navController = navController
+                        )
+                    }
+                )
+            }
+        ) { innerPadding ->
+            NavHost(
+                navController = navController,
+                graph = provideNavGraph(navController),
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(innerPadding)
+                    .imePadding(),
+
+                enterTransition = {
+                    slideIntoContainer(
+                        towards = AnimatedContentTransitionScope.SlideDirection.Left,
+                        animationSpec = tween(500)
                     )
-                }
-            )
-        },
-        floatingActionButton = {
-            FloatingButton(
-                onNavigate = { screen ->
-                    navigateTo(
-                        screen = screen,
-                        navController = navController
+                },
+                exitTransition = {
+                    slideOutOfContainer(
+                        AnimatedContentTransitionScope.SlideDirection.Left,
+                        animationSpec = tween(500)
+                    )
+                },
+                popEnterTransition = {
+                    slideIntoContainer(
+                        AnimatedContentTransitionScope.SlideDirection.Right,
+                        animationSpec = tween(500)
+                    )
+                },
+                popExitTransition = {
+                    slideOutOfContainer(
+                        AnimatedContentTransitionScope.SlideDirection.Right,
+                        animationSpec = tween(500)
                     )
                 }
             )
         }
-    ) { innerPadding ->
-
-        NavHost(
-            navController = navController,
-            graph = provideNavGraph(navController),
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(innerPadding)
-                .imePadding(),
-
-            enterTransition = {
-                slideIntoContainer(
-                    towards = AnimatedContentTransitionScope.SlideDirection.Left,
-                    animationSpec = tween(500)
-                )
-            },
-            exitTransition = {
-                slideOutOfContainer(
-                    AnimatedContentTransitionScope.SlideDirection.Left,
-                    animationSpec = tween(500)
-                )
-            },
-            popEnterTransition = {
-                slideIntoContainer(
-                    AnimatedContentTransitionScope.SlideDirection.Right,
-                    animationSpec = tween(500)
-                )
-            },
-            popExitTransition = {
-                slideOutOfContainer(
-                    AnimatedContentTransitionScope.SlideDirection.Right,
-                    animationSpec = tween(500)
-                )
-            }
-        )
     }
 }
 

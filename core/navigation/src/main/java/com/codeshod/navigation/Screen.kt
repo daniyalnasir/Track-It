@@ -1,5 +1,7 @@
 package com.codeshod.navigation
 
+import androidx.navigation.NavDestination
+import androidx.navigation.NavDestination.Companion.hasRoute
 import com.codeshod.navigation.Route.EMPTY_STRING
 import com.codeshod.navigation.Route.ROUTE_ADD_TRANSACTION
 import com.codeshod.navigation.Route.ROUTE_CATEGORIES
@@ -33,4 +35,29 @@ sealed class Screen(val route: String = EMPTY_STRING) {
     @Serializable
     object AddTransaction : Screen(ROUTE_ADD_TRANSACTION)
 
+
+
+    companion object {
+
+        fun fromRoute(route: String?): Screen? {
+            return when (route) {
+                Dashboard.route -> Dashboard
+                Stats.route -> Stats
+                Categories.route -> Categories
+                Settings.route -> Settings
+                Wallet.route -> Wallet
+                AddTransaction.route -> AddTransaction
+                else -> null
+            }
+        }
+
+        fun NavDestination.toScreen(): Screen? {
+            return when {
+                hasRoute<Dashboard>() -> Dashboard
+                hasRoute<Stats>() -> Stats
+                hasRoute<Settings>() -> Settings
+                else -> null
+            }
+        }
+    }
 }
