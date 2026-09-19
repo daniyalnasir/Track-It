@@ -1,11 +1,10 @@
 package com.codeshod.navigation
 
 object Route {
-    const val EMPTY_STRING = ""
-    const val ROUTE_DASHBOARD = "dashboard"
-    const val ROUTE_STATS = "stats"
-    const val ROUTE_CATEGORIES = "categories"
-    const val ROUTE_SETTINGS = "settings"
-    const val ROUTE_WALLET = "wallet"
-    const val ROUTE_ADD_TRANSACTION = "addTransaction"
+    const val ROUTE_DASHBOARD = "Dashboard"
+    const val ROUTE_STATS = "Stats"
+    const val ROUTE_CATEGORIES = "Categories"
+    const val ROUTE_SETTINGS = "Settings"
+    const val ROUTE_WALLET = "Wallet"
+    const val ROUTE_ADD_TRANSACTION = "Add Transaction"
 }

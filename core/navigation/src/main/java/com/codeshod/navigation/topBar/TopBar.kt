@@ -1,4 +1,4 @@
-package com.codeshod.navigation
+package com.codeshod.navigation.topBar
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -19,10 +19,14 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.codeshod.navigation.R
+import com.codeshod.navigation.Screen
+import com.codeshod.navigation.viewModel.HomeViewModel.TopBarViewState
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TopBar(
+    topBarViewState: TopBarViewState,
     currentScreen: Screen?,
     onNavigate: (screen: Screen) -> Unit,
     isToolbarVisible: Boolean = true
@@ -30,12 +34,11 @@ fun TopBar(
     if (isToolbarVisible) {
         TopAppBar(
             title = {
-
                 if (currentScreen is Screen.Dashboard) {
                     DashboardContent("Daniyal Nasir")
                 } else {
                     Text(
-                        text = "Settings",
+                        text = topBarViewState.title,
                     )
                 }
             },
@@ -43,11 +46,13 @@ fun TopBar(
                 containerColor = Color.Transparent,
             ),
             navigationIcon = {
-                IconButton(onClick = { onNavigate(Screen.PreviousScreen) }) {
-                    Icon(
-                        imageVector = ImageVector.vectorResource(R.drawable.ic_back),
-                        contentDescription = "back_button"
-                    )
+                if (topBarViewState.isBackNavigationButtonVisible) {
+                    IconButton(onClick = { onNavigate(Screen.PreviousScreen) }) {
+                        Icon(
+                            imageVector = ImageVector.vectorResource(R.drawable.ic_back),
+                            contentDescription = "back_button"
+                        )
+                    }
                 }
             },
             actions = {

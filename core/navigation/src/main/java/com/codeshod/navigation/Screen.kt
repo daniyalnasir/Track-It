@@ -2,7 +2,7 @@ package com.codeshod.navigation
 
 import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hasRoute
-import com.codeshod.navigation.Route.EMPTY_STRING
+import com.codeshod.design_systems.EMPTY_STRING
 import com.codeshod.navigation.Route.ROUTE_ADD_TRANSACTION
 import com.codeshod.navigation.Route.ROUTE_CATEGORIES
 import com.codeshod.navigation.Route.ROUTE_DASHBOARD
@@ -12,10 +12,10 @@ import com.codeshod.navigation.Route.ROUTE_WALLET
 import kotlinx.serialization.Serializable
 
 @Serializable
-sealed class Screen(val route: String = EMPTY_STRING) {
+sealed class Screen(val title: String = EMPTY_STRING) {
 
     @Serializable
-    data object PreviousScreen : Screen(route = EMPTY_STRING)
+    data object PreviousScreen : Screen(title = EMPTY_STRING)
 
     @Serializable
     object Dashboard : Screen(ROUTE_DASHBOARD)
@@ -41,12 +41,12 @@ sealed class Screen(val route: String = EMPTY_STRING) {
 
         fun fromRoute(route: String?): Screen? {
             return when (route) {
-                Dashboard.route -> Dashboard
-                Stats.route -> Stats
-                Categories.route -> Categories
-                Settings.route -> Settings
-                Wallet.route -> Wallet
-                AddTransaction.route -> AddTransaction
+                Dashboard.title -> Dashboard
+                Stats.title -> Stats
+                Categories.title -> Categories
+                Settings.title -> Settings
+                Wallet.title -> Wallet
+                AddTransaction.title -> AddTransaction
                 else -> null
             }
         }
@@ -55,7 +55,10 @@ sealed class Screen(val route: String = EMPTY_STRING) {
             return when {
                 hasRoute<Dashboard>() -> Dashboard
                 hasRoute<Stats>() -> Stats
+                hasRoute<Categories>() -> Categories
                 hasRoute<Settings>() -> Settings
+                hasRoute<Wallet>() -> Wallet
+                hasRoute<AddTransaction>() -> AddTransaction
                 else -> null
             }
         }

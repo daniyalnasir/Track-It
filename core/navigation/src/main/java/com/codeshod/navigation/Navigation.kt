@@ -7,9 +7,12 @@ import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
 import androidx.navigation.NavGraph
 import androidx.navigation.NavHostController
@@ -22,26 +25,38 @@ import com.codeshod.categories.presentation.CategoriesScreen
 import com.codeshod.dashboard.presentation.DashboardScreen
 import com.codeshod.design_systems.CurvedHeader
 import com.codeshod.navigation.Screen.Companion.toScreen
+import com.codeshod.navigation.bottomBar.BottomNavigationBar
+import com.codeshod.navigation.topBar.TopBar
+import com.codeshod.navigation.viewModel.HomeIntent
+import com.codeshod.navigation.viewModel.HomeViewModel
 import com.codeshod.settings.presentation.SettingsScreen
 import com.codeshod.stats.presentation.StatsScreen
 import com.codeshod.wallet.presentation.WalletScreen
 
 @Composable
 fun Navigation(
-    navController: NavHostController = rememberNavController()
+    homeViewModel: HomeViewModel = hiltViewModel(),
+    navController: NavHostController = rememberNavController(),
 ) {
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentScreen = navBackStackEntry
         ?.destination
         ?.toScreen()
 
+    LaunchedEffect(currentScreen) {
+        if (currentScreen != null)
+            homeViewModel.onIntent(HomeIntent.OnScreenChanged(currentScreen))
+    }
+
+    val homeViewState by homeViewModel.viewStateFlow.collectAsStateWithLifecycle()
+
     CurvedHeader {
         Scaffold(
-            modifier = Modifier
-                .fillMaxSize(),
+            modifier = Modifier.fillMaxSize(),
             containerColor = Color.Transparent,
             topBar = {
                 TopBar(
+                    topBarViewState = homeViewState.topBarViewState,
                     currentScreen = currentScreen,
                     onNavigate = { screen ->
                         navigateTo(screen, navController)
@@ -50,6 +65,7 @@ fun Navigation(
             },
             bottomBar = {
                 BottomNavigationBar(
+                    bottomBarViewState = homeViewState.bottomBarViewState,
                     onNavigate = { screen ->
                         navigateTo(
                             screen = screen,

@@ -14,6 +14,7 @@ appcompat = "1.8.0"
 material = "1.14.0"
 ksp = "2.3.4"
 hilt = "2.60.1"
+hiltNavigationCompose = "1.4.0"
 roomRuntime = "2.8.5"
 
 [libraries]
@@ -40,6 +41,7 @@ material = { group = "com.google.android.material", name = "material", version.r
 
 hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
 hilt-android-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hilt" }
+androidx-hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hiltNavigationCompose" }
 
 [bundles]
 compose-ui = [

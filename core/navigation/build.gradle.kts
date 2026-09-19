@@ -2,6 +2,8 @@ plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.kotlin.serialization)
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.hilt)
 }
 
 android {
@@ -43,6 +45,13 @@ dependencies {
     debugImplementation(libs.androidx.compose.ui.test.manifest)
     implementation(libs.navigation.compose)
     implementation(libs.kotlinx.serialization.json)
+
+    // 2. Add the missing runtime dependency
+    implementation(libs.hilt.android)
+    implementation(libs.androidx.hilt.navigation.compose)
+
+    // 3. Add the compiler dependency
+    ksp (libs.hilt.android.compiler)
 
     implementation(projects.core.designSystems)
     implementation(projects.dashboard)
