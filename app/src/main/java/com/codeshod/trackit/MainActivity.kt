@@ -5,7 +5,6 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import com.codeshod.navigation.Navigation
-import com.codeshod.trackit.ui.theme.TrackItTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
