@@ -5,6 +5,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.vectorResource
+import com.codeshod.AppDrawables
 
 @Composable
 fun FloatingButton(
@@ -17,7 +18,7 @@ fun FloatingButton(
         }
     ) {
         Icon(
-            imageVector = ImageVector.vectorResource(R.drawable.ic_add),
+            imageVector = ImageVector.vectorResource(AppDrawables.add),
             contentDescription = "Add Item"
         )
     }

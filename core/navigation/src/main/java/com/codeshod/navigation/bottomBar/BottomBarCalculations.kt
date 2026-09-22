@@ -1,28 +1,28 @@
 package com.codeshod.navigation.bottomBar
 
-import com.codeshod.navigation.R
+import com.codeshod.AppDrawables
 import com.codeshod.navigation.Screen
 
 
 val bottomBarNavigationItems = listOf(
     BottomBarNavigationItem(
-        icon = R.drawable.ic_dashboard,
+        icon = AppDrawables.dashboard,
         route = Screen.Dashboard
     ),
     BottomBarNavigationItem(
-        icon = R.drawable.ic_stats,
+        icon = AppDrawables.stats,
         route = Screen.Stats
     ),
     BottomBarNavigationItem(
-        icon = R.drawable.ic_category,
+        icon = AppDrawables.category,
         route = Screen.Categories
     ),
     BottomBarNavigationItem(
-        icon = R.drawable.ic_wallet,
+        icon = AppDrawables.wallet,
         route = Screen.Wallet
     ),
     BottomBarNavigationItem(
-        icon = R.drawable.ic_settings,
+        icon = AppDrawables.settings,
         route = Screen.Settings
     )
 )

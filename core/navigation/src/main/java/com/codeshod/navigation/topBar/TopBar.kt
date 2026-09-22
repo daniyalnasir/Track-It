@@ -19,7 +19,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.codeshod.navigation.R
+import com.codeshod.AppDrawables
 import com.codeshod.navigation.Screen
 import com.codeshod.navigation.viewModel.HomeViewModel.TopBarViewState
 
@@ -49,7 +49,7 @@ fun TopBar(
                 if (topBarViewState.isBackNavigationButtonVisible) {
                     IconButton(onClick = { onNavigate(Screen.PreviousScreen) }) {
                         Icon(
-                            imageVector = ImageVector.vectorResource(R.drawable.ic_back),
+                            imageVector = ImageVector.vectorResource(AppDrawables.back),
                             contentDescription = "back_button"
                         )
                     }
