@@ -19,7 +19,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.codeshod.AppDrawables
+import com.codeshod.design_systems.AppDrawables
 import com.codeshod.navigation.Screen
 import com.codeshod.navigation.viewModel.HomeViewModel.TopBarViewState
 

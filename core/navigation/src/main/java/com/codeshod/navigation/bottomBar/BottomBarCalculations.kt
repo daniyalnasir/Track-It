@@ -1,6 +1,6 @@
 package com.codeshod.navigation.bottomBar
 
-import com.codeshod.AppDrawables
+import com.codeshod.design_systems.AppDrawables
 import com.codeshod.navigation.Screen
 
 

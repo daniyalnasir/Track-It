@@ -1,7 +1,6 @@
-package com.codeshod
+package com.codeshod.design_systems
 
 import androidx.annotation.DrawableRes
-import com.codeshod.design_systems.R
 
 object AppDrawables {
     @DrawableRes
