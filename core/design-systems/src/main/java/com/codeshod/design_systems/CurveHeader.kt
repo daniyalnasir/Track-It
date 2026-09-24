@@ -12,6 +12,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
 
+private val HEADER_CURVE_HEIGHT = 250.dp
+val HEADER_CURVE_HEIGHT_WITHOUT_TOPBAR = HEADER_CURVE_HEIGHT - 130.dp
+
 @Composable
 fun CurvedHeader(
     modifier: Modifier = Modifier,
@@ -23,7 +26,7 @@ fun CurvedHeader(
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(300.dp)
+                .height(HEADER_CURVE_HEIGHT)
                 .clip(HeaderShape())
                 .background(MaterialTheme.colorScheme.primaryContainer)
         )
