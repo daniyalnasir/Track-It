@@ -8,6 +8,7 @@ val LightColorScheme = lightColorScheme(
     primary = primaryLight,
     primaryContainer = primaryContainerLight,
     secondary = secondaryLight,
+    secondaryContainer = secondaryContainerLight,
     tertiary = tertiaryLight
 )
 
@@ -15,6 +16,7 @@ val DarkColorScheme = darkColorScheme(
     primary = primaryDark,
     primaryContainer = primaryContainerDark,
     secondary = secondaryDark,
+    secondaryContainer = secondaryContainerDark,
     tertiary = tertiaryDark
 )
 

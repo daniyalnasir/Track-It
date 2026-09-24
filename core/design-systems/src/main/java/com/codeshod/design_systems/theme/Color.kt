@@ -25,14 +25,16 @@ import androidx.compose.ui.graphics.Color
  */
 
 
-private val White = Color(0xFFFFFFFF)
-private val Teal = Color(0xFF2A7C76)
+val White = Color(0xFFFFFFFF)
+val Black = Color(0xFF000000)
+val Gray = Color(0xFF666666)
 
-private val darkTeal10  = Color(0x1A438883)
-private val darkTeal100  = Color(0xFF438883)
+val Teal = Color(0xFF2A7C76)
 
-private val CyanGreen  = Color(0xFF29756F)
+val darkTeal40 = Color(0x66438883)
+val darkTeal100 = Color(0xFF438883)
 
+val CyanGreen = Color(0xFF29756F)
 
 // Light Theme Colors
 val primaryLight = Teal
@@ -42,7 +44,7 @@ val onPrimaryContainerLight = White
 
 val secondaryLight = Teal
 val onSecondaryLight = White
-val secondaryContainerLight = darkTeal10
+val secondaryContainerLight = darkTeal40
 val onSecondaryContainerLight = White
 
 val tertiaryLight = Teal
@@ -69,7 +71,7 @@ val onPrimaryContainerDark = White
 
 val secondaryDark = Teal
 val onSecondaryDark = White
-val secondaryContainerDark = darkTeal10
+val secondaryContainerDark = darkTeal40
 val onSecondaryContainerDark = White
 
 val tertiaryDark = Teal
