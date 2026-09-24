@@ -20,6 +20,7 @@ import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.codeshod.design_systems.AppDrawables
+import com.codeshod.design_systems.theme.White
 import com.codeshod.navigation.Screen
 import com.codeshod.navigation.viewModel.HomeViewModel.TopBarViewState
 
@@ -29,9 +30,8 @@ fun TopBar(
     topBarViewState: TopBarViewState,
     currentScreen: Screen?,
     onNavigate: (screen: Screen) -> Unit,
-    isToolbarVisible: Boolean = true
 ) {
-    if (isToolbarVisible) {
+    if (topBarViewState.isVisible) {
         TopAppBar(
             title = {
                 if (currentScreen is Screen.Dashboard) {
@@ -44,6 +44,9 @@ fun TopBar(
             },
             colors = TopAppBarDefaults.topAppBarColors(
                 containerColor = Color.Transparent,
+                navigationIconContentColor = White,
+                titleContentColor = White,
+                actionIconContentColor = White
             ),
             navigationIcon = {
                 if (topBarViewState.isBackNavigationButtonVisible) {
@@ -56,12 +59,14 @@ fun TopBar(
                 }
             },
             actions = {
-//                IconButton(onClick = {  }) {
-//                    Icon(
-//                        imageVector = ImageVector.vectorResource(R.drawable.ic_back),
-//                        contentDescription = "back_button"
-//                    )
-//                }
+                if (topBarViewState.isAddNavigationButtonVisible) {
+                    IconButton(onClick = { }) {
+                        Icon(
+                            imageVector = ImageVector.vectorResource(AppDrawables.addCircle),
+                            contentDescription = "add_button"
+                        )
+                    }
+                }
             }
         )
     }

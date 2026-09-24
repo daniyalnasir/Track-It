@@ -7,6 +7,9 @@ object AppDrawables {
     val add = R.drawable.ic_add
 
     @DrawableRes
+    val addCircle = R.drawable.ic_add_circle
+
+    @DrawableRes
     val back = R.drawable.ic_back
 
     @DrawableRes

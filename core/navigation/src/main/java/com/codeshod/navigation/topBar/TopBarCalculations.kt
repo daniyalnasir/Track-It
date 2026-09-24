@@ -25,6 +25,17 @@ fun isBackNavigationButtonVisible(currentScreen: Screen?): Boolean {
     return false
 }
 
+private val screensWithAddButton = listOf<Screen>(
+    Screen.Wallet
+)
+
+fun isAddNavigationButtonVisible(currentScreen: Screen?): Boolean {
+    if (currentScreen != null) {
+        return screensWithAddButton.contains(currentScreen)
+    }
+    return false
+}
+
 fun getTopBarTitle(currentScreen: Screen?): String {
     return currentScreen?.title ?: EMPTY_STRING
 }

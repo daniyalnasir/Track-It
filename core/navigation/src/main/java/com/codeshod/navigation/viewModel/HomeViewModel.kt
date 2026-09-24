@@ -7,6 +7,7 @@ import com.codeshod.navigation.Screen
 import com.codeshod.navigation.bottomBar.BottomBarNavigationItem
 import com.codeshod.navigation.bottomBar.provideSelectedBottomBarNavigationItem
 import com.codeshod.navigation.topBar.getTopBarTitle
+import com.codeshod.navigation.topBar.isAddNavigationButtonVisible
 import com.codeshod.navigation.topBar.isBackNavigationButtonVisible
 import com.codeshod.navigation.topBar.isTopBarVisible
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -38,6 +39,7 @@ class HomeViewModel @Inject constructor() : ViewModel() {
     data class TopBarViewState(
         val isVisible: Boolean = false,
         val isBackNavigationButtonVisible: Boolean = false,
+        val isAddNavigationButtonVisible: Boolean = false,
         val title: String = EMPTY_STRING,
     )
 
@@ -99,6 +101,7 @@ class HomeViewModel @Inject constructor() : ViewModel() {
         val topBarViewState = viewState.topBarViewState.copy(
             isVisible = isTopBarVisible(currentScreen = currentScreen),
             isBackNavigationButtonVisible = isBackNavigationButtonVisible(currentScreen = currentScreen),
+            isAddNavigationButtonVisible = isAddNavigationButtonVisible(currentScreen = currentScreen),
             title = getTopBarTitle(currentScreen = currentScreen),
         )
 
