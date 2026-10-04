@@ -20,7 +20,7 @@ import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.codeshod.design_systems.AppDrawables
-import com.codeshod.design_systems.theme.White
+import com.codeshod.design_systems.theme.WhiteColor
 import com.codeshod.navigation.Screen
 import com.codeshod.navigation.viewModel.HomeViewModel.TopBarViewState
 
@@ -44,9 +44,9 @@ fun TopBar(
             },
             colors = TopAppBarDefaults.topAppBarColors(
                 containerColor = Color.Transparent,
-                navigationIconContentColor = White,
-                titleContentColor = White,
-                actionIconContentColor = White
+                navigationIconContentColor = WhiteColor,
+                titleContentColor = WhiteColor,
+                actionIconContentColor = WhiteColor
             ),
             navigationIcon = {
                 if (topBarViewState.isBackNavigationButtonVisible) {
@@ -59,8 +59,12 @@ fun TopBar(
                 }
             },
             actions = {
-                if (topBarViewState.isAddNavigationButtonVisible) {
-                    IconButton(onClick = { }) {
+                if (topBarViewState.topBarActionButtonData.isActionButtonVisible) {
+                    IconButton(onClick = {
+                        topBarViewState.topBarActionButtonData.navigateTo?.let {
+                            onNavigate(it)
+                        }
+                    }) {
                         Icon(
                             imageVector = ImageVector.vectorResource(AppDrawables.addCircle),
                             contentDescription = "add_button"

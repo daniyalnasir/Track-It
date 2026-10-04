@@ -23,8 +23,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.codeshod.design_systems.AppDrawables
 import com.codeshod.design_systems.HEADER_CURVE_HEIGHT_WITHOUT_TOPBAR
-import com.codeshod.design_systems.theme.Black
-import com.codeshod.design_systems.theme.White
+import com.codeshod.design_systems.theme.BlackColor
+import com.codeshod.design_systems.theme.WhiteColor
 import com.codeshod.design_systems.views.CardView
 import com.codeshod.design_systems.views.TextView
 
@@ -49,7 +49,7 @@ fun WalletScreen() {
                 )
                 TextView(
                     text = "$ 2548.00",
-                    color = Black,
+                    color = BlackColor,
                     fontSize = 24.sp,
                     fontWeight = FontWeight.Bold
                 )
@@ -81,7 +81,7 @@ private fun WalletItem(item: Int) {
                     modifier = Modifier
                         .size(64.dp)
                         .background(
-                            color = White,
+                            color = WhiteColor,
                             shape = CircleShape
                         )
                         .padding(12.dp)
