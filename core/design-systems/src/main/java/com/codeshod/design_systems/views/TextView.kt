@@ -12,22 +12,21 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.TextUnit
 import com.codeshod.design_systems.EMPTY_STRING
-import com.codeshod.design_systems.theme.Gray
-
+import com.codeshod.design_systems.theme.GrayColor
 
 @Composable
 fun TextView(
+    modifier: Modifier = Modifier,
     isTitleAllCaps: Boolean = true,
     text: String = EMPTY_STRING,
     style: TextStyle = MaterialTheme.typography.titleSmall,
-    color: Color = Gray,
+    color: Color = GrayColor,
     fontWeight: FontWeight = FontWeight.Normal,
     fontSize: TextUnit = TextUnit.Unspecified,
     textAlign: TextAlign = TextAlign.Start,
     maxLines: Int = 1,
     textDecoration: TextDecoration = TextDecoration.None,
     overflow: TextOverflow = TextOverflow.Visible,
-    modifier: Modifier = Modifier
 ) {
     Text(
         text = if (isTitleAllCaps) {

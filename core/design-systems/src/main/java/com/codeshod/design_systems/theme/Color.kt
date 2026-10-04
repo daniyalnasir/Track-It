@@ -30,7 +30,6 @@ val WhiteSmokeColor = Color(0xFFF4F6F6)
 
 val BlackColor = Color(0xFF000000)
 val GrayColor = Color(0xFF666666)
-val Gray40Color = Color(0xFF666666)
 
 val TealColor = Color(0xFF2A7C76)
 
