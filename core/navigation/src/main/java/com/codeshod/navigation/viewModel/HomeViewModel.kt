@@ -39,8 +39,13 @@ class HomeViewModel @Inject constructor() : ViewModel() {
     data class TopBarViewState(
         val isVisible: Boolean = false,
         val isBackNavigationButtonVisible: Boolean = false,
-        val isAddNavigationButtonVisible: Boolean = false,
+        val topBarActionButtonData: TopBarActionButtonData = TopBarActionButtonData(),
         val title: String = EMPTY_STRING,
+    )
+
+    data class TopBarActionButtonData(
+        val isActionButtonVisible: Boolean = false,
+        val navigateTo: Screen? = null,
     )
 
     data class BottomBarViewState(
@@ -98,10 +103,16 @@ class HomeViewModel @Inject constructor() : ViewModel() {
     }
 
     private fun onScreenChanged(currentScreen: Screen): ViewState {
+
         val topBarViewState = viewState.topBarViewState.copy(
             isVisible = isTopBarVisible(currentScreen = currentScreen),
             isBackNavigationButtonVisible = isBackNavigationButtonVisible(currentScreen = currentScreen),
-            isAddNavigationButtonVisible = isAddNavigationButtonVisible(currentScreen = currentScreen),
+            topBarActionButtonData = TopBarActionButtonData(
+                isActionButtonVisible = isAddNavigationButtonVisible(
+                    currentScreen = currentScreen
+                ),
+                navigateTo = Screen.AddWallet
+            ),
             title = getTopBarTitle(currentScreen = currentScreen),
         )
 
