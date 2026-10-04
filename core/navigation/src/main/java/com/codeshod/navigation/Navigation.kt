@@ -26,6 +26,7 @@ import com.codeshod.dashboard.presentation.DashboardScreen
 import com.codeshod.design_systems.CurvedHeader
 import com.codeshod.navigation.Screen.Companion.toScreen
 import com.codeshod.navigation.bottomBar.BottomNavigationBar
+import com.codeshod.navigation.floatingActionButton.FloatingActionButton
 import com.codeshod.navigation.topBar.TopBar
 import com.codeshod.navigation.viewModel.HomeIntent
 import com.codeshod.navigation.viewModel.HomeViewModel
@@ -76,7 +77,8 @@ fun Navigation(
                 )
             },
             floatingActionButton = {
-                FloatingButton(
+                FloatingActionButton(
+                    floatingActionButtonViewState = homeViewState.floatingActionButtonViewState,
                     onNavigate = { screen ->
                         navigateTo(
                             screen = screen,

@@ -6,6 +6,7 @@ import com.codeshod.design_systems.EMPTY_STRING
 import com.codeshod.navigation.Screen
 import com.codeshod.navigation.bottomBar.BottomBarNavigationItem
 import com.codeshod.navigation.bottomBar.provideSelectedBottomBarNavigationItem
+import com.codeshod.navigation.floatingActionButton.isFloatingActionButtonVisible
 import com.codeshod.navigation.topBar.getTopBarTitle
 import com.codeshod.navigation.topBar.isAddNavigationButtonVisible
 import com.codeshod.navigation.topBar.isBackNavigationButtonVisible
@@ -34,6 +35,7 @@ class HomeViewModel @Inject constructor() : ViewModel() {
     data class ViewState(
         val topBarViewState: TopBarViewState = TopBarViewState(),
         val bottomBarViewState: BottomBarViewState = BottomBarViewState(),
+        val floatingActionButtonViewState: FloatingActionButtonViewState = FloatingActionButtonViewState(),
     )
 
     data class TopBarViewState(
@@ -51,6 +53,11 @@ class HomeViewModel @Inject constructor() : ViewModel() {
     data class BottomBarViewState(
         val isVisible: Boolean = false,
         val selectedBottomBarNavigationItem: BottomBarNavigationItem? = null,
+    )
+
+    data class FloatingActionButtonViewState(
+        val isVisible: Boolean = false,
+        val navigateTo: Screen? = null,
     )
 
     enum class BottomDestination {
@@ -129,9 +136,16 @@ class HomeViewModel @Inject constructor() : ViewModel() {
             } else {
                 viewState.bottomBarViewState
             }
+
+        val floatingActionButtonViewState = FloatingActionButtonViewState(
+            isVisible = isFloatingActionButtonVisible(currentScreen),
+            navigateTo = null
+        )
+
         return viewState.copy(
             topBarViewState = topBarViewState,
-            bottomBarViewState = bottomBarViewState
+            bottomBarViewState = bottomBarViewState,
+            floatingActionButtonViewState = floatingActionButtonViewState
         )
     }
 }
