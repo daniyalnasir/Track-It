@@ -4,6 +4,7 @@ import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hasRoute
 import com.codeshod.design_systems.EMPTY_STRING
 import com.codeshod.navigation.Route.ROUTE_ADD_TRANSACTION
+import com.codeshod.navigation.Route.ROUTE_ADD_WALLET
 import com.codeshod.navigation.Route.ROUTE_CATEGORIES
 import com.codeshod.navigation.Route.ROUTE_DASHBOARD
 import com.codeshod.navigation.Route.ROUTE_SETTINGS
@@ -31,6 +32,8 @@ sealed class Screen(val title: String = EMPTY_STRING) {
 
     @Serializable
     object Wallet : Screen(ROUTE_WALLET)
+    @Serializable
+    object AddWallet : Screen(ROUTE_ADD_WALLET)
 
     @Serializable
     object AddTransaction : Screen(ROUTE_ADD_TRANSACTION)
@@ -46,6 +49,7 @@ sealed class Screen(val title: String = EMPTY_STRING) {
                 Categories.title -> Categories
                 Settings.title -> Settings
                 Wallet.title -> Wallet
+                AddWallet.title -> AddWallet
                 AddTransaction.title -> AddTransaction
                 else -> null
             }
@@ -58,6 +62,7 @@ sealed class Screen(val title: String = EMPTY_STRING) {
                 hasRoute<Categories>() -> Categories
                 hasRoute<Settings>() -> Settings
                 hasRoute<Wallet>() -> Wallet
+                hasRoute<AddWallet>() -> AddWallet
                 hasRoute<AddTransaction>() -> AddTransaction
                 else -> null
             }

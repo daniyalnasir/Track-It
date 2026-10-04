@@ -32,6 +32,7 @@ import com.codeshod.navigation.viewModel.HomeViewModel
 import com.codeshod.settings.presentation.SettingsScreen
 import com.codeshod.stats.presentation.StatsScreen
 import com.codeshod.wallet.presentation.WalletScreen
+import com.codeshod.wallet.presentation.addWallet.AddWalletScreen
 
 @Composable
 fun Navigation(
@@ -140,6 +141,9 @@ fun provideNavGraph(navController: NavHostController): NavGraph {
         }
         composable<Screen.Wallet> {
             WalletScreen()
+        }
+        composable<Screen.AddWallet> {
+            AddWalletScreen()
         }
         composable<Screen.AddTransaction> {
         }
